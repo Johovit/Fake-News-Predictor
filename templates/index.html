@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify the Story</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Verify the Story</h1>
+        <p class="subtitle">
+            Paste a news story or headline below to analyze its structural patterns for credibility.
+        </p>
+
+        <form action="/predict" method="POST" id="predictForm">
+            <textarea
+                name="news"
+                id="newsInput"
+                rows="10"
+                placeholder="Paste the text here..."
+                required></textarea>
+            
+            <div class="char-counter" id="charCounter">0 characters</div>
+
+            <button type="submit" id="submitBtn">
+                Analyze Article
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('newsInput');
+        const counter = document.getElementById('charCounter');
+
+        // Character counter interaction
+        textarea.addEventListener('input', function() {
+            const count = textarea.value.length;
+            counter.textContent = `${count} character${count === 1 ? '' : 's'}`;
+        });
+    </script>
+</body>
+</html>
